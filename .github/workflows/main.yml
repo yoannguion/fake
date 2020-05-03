@@ -16,6 +16,19 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      - name: ls before
+        run: |
+          ls -l
+      - name: build rpm el8
+        id: build_rpm
+        env:
+          SPEC_FILE: fake.spec
+          RELEASE_TAG: v0.0.1
+          RELEASE_GITHUB_TOKEN: ${{ secrets.RELEASE_GITHUB_TOKEN }}
+        uses: docker://yoannguion/rpmbuilder
+      - name: ls after
+        run: |
+          ls -l
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
