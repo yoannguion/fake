@@ -1,0 +1,4 @@
+buttons:
+  - title: Build Rpm
+    action: "build_rpm"
+    description: build rpm
