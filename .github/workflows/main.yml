@@ -50,5 +50,5 @@ jobs:
         env:
           PACKAGECLOUD_TOKEN: ${{ secrets.PACKAGECLOUD_TOKEN }}
         with:
-          args: /pkgcloud-push yoannguion/el8 *.rpm
+          args: ls -l
         uses: docker://yoannguion/pkgcloud
