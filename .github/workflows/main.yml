@@ -46,8 +46,8 @@ jobs:
           RELEASE_GITHUB_TOKEN: ${{ secrets.RELEASE_GITHUB_TOKEN }}
         uses: docker://yoannguion/copy-rpms-to-release
       - name: ls after
-          run: |
-            ls -l
+        run: |
+          ls -l
       - name: Upload Release Assets to packagecloud.io
         id: upload-release-assets-packagecloud-io
         env:
