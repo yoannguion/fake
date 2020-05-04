@@ -45,3 +45,10 @@ jobs:
           RELEASE_ASSETS_UPLOAD_URL: ${{ steps.create_release.outputs.upload_url }}
           RELEASE_GITHUB_TOKEN: ${{ secrets.RELEASE_GITHUB_TOKEN }}
         uses: docker://yoannguion/copy-rpms-to-release
+      - name: Upload Release Assets to packagecloud.io
+        id: upload-release-assets-packagecloud-io
+        env:
+          PACKAGECLOUD_TOKEN: ${{ secrets.PACKAGECLOUD_TOKEN }}
+        with:
+          args: /pkgcloud-push yoannguion/el8 *.rpm
+        uses: docker://yoannguion/pkgcloud
